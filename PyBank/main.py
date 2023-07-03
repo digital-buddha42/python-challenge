@@ -68,13 +68,12 @@ with open(csvpath) as csvfile:
 
         total_months += 1
         net_profit_losses = net_profit_losses + profit_loss
-        last_profit_losses = 0
 
         if total_months > 1:
             change = profit_loss - last_profit_losses
 
             sum_profit_losses = sum_profit_losses + change
-            ave_change = sum_profit_losses / (total_months - 1)
+            
 
             if change > greatest_increase:
                 greatest_increase = change
@@ -84,10 +83,14 @@ with open(csvpath) as csvfile:
                 greatest_decrease = change
                 greatest_decrease_month = row[0]
 
-        last_profit_losses = row[1]
-    
+        last_profit_losses = int(row[1])
+        
+    ave_change = sum_profit_losses / (total_months - 1)
     
     print(f"Total Months: {total_months}")
     print(f'Total: ${net_profit_losses}')
-    print(F"Average Change: {ave_change}")
+    print(f"Average Change: ${round(ave_change,2)}")
+    print(f"Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase})")
+    print(f"Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease})")
+    
 
