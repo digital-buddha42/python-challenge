@@ -36,9 +36,18 @@ import csv
 
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
-# Counter for total months
+# Counters
 total_months = 0
-total_profit_losses = 0
+net_profit_losses = 0
+
+
+sum_profit_losses = 0
+
+greatest_increase = 0
+greatest_increase_month = ""
+
+greatest_decrease = 999999999999
+greatest_decrease_month = ""
 
 # Method 2: Improved Reading using CSV module
 
@@ -56,9 +65,29 @@ with open(csvpath) as csvfile:
     for row in csvreader:
         date = row[0]
         profit_loss = int(row[1])
-        total_months += 1
-        total_profit_losses = total_profit_losses + profit_loss
 
+        total_months += 1
+        net_profit_losses = net_profit_losses + profit_loss
+        last_profit_losses = 0
+
+        if total_months > 1:
+            change = profit_loss - last_profit_losses
+
+            sum_profit_losses = sum_profit_losses + change
+            ave_change = sum_profit_losses / (total_months - 1)
+
+            if change > greatest_increase:
+                greatest_increase = change
+                greatest_increase_month = row[0]
+
+            if change < greatest_decrease:
+                greatest_decrease = change
+                greatest_decrease_month = row[0]
+
+        last_profit_losses = row[1]
+    
+    
     print(f"Total Months: {total_months}")
-    print(f'Total: ${total_profit_losses}')
+    print(f'Total: ${net_profit_losses}')
+    print(F"Average Change: {ave_change}")
 
