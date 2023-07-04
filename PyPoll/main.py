@@ -68,3 +68,19 @@ with open(csvpath) as csvfile:
     print(f'{candidates[2]}: {formatted_percentage_raymon} ({total_raymon})')
     print('-------------------------')
     print(f'Winner: {winner}')
+    print('-------------------------')
+
+    # Specify the file to write to
+    output_path = os.path.join("analysis", "analysis.txt")
+
+    with open(output_path, 'w') as f:
+        f.write('Election Results\n')
+        f.write('-------------------------\n')
+        f.write(f'Total Votes: {total_votes}\n')
+        f.write('-------------------------\n')
+        f.write(f'{candidates[0]}: {formatted_percentage_charles} ({total_charles})\n')
+        f.write(f'{candidates[1]}: {formatted_percentage_diana} ({total_diana})\n')
+        f.write(f'{candidates[2]}: {formatted_percentage_raymon} ({total_raymon})\n')
+        f.write('-------------------------\n')
+        f.write(f'Winner: {winner}\n')
+        f.write('-------------------------')
