@@ -29,4 +29,8 @@ with open(csvpath) as csvfile:
         county = row[1]
         candidate = row[2]
 
+        if candidate not in candidates:
+            candidates.append(candidate)
+
     print(f"Total Votes: {total_votes}")
+    print(f"{candidates[0]}")
