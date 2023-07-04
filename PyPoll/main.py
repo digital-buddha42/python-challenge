@@ -32,5 +32,23 @@ with open(csvpath) as csvfile:
         if candidate not in candidates:
             candidates.append(candidate)
 
+        if row[2] == 'Charles Casper Stockham':
+            total_charles += 1
+        elif row[2] == 'Diana DeGette':
+            total_diana += 1
+        elif row[2] == 'Raymon Anthony Doane':
+            total_raymon += 1
+
+    total_charles_percent = total_charles/total_votes
+    formatted_percentage_charles = f"{total_charles_percent:.3%}"
+
+    total_diana_percent = total_diana/total_votes
+    formatted_percentage_diana = f"{total_diana_percent:.3%}"
+
+    total_raymon_percent = total_raymon/total_votes
+    formatted_percentage_raymon = f"{total_raymon_percent:.3%}"
+
     print(f"Total Votes: {total_votes}")
-    print(f"{candidates[0]}")
+    print(f'{candidates[0]}: {formatted_percentage_charles} ({total_charles})')
+    print(f'{candidates[1]}: {formatted_percentage_diana} ({total_diana})')
+    print(f'{candidates[2]}: {formatted_percentage_raymon} ({total_raymon})')
