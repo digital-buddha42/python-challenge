@@ -88,4 +88,17 @@ with open(csvpath) as csvfile:
     print(f"Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase})")
     print(f"Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease})")
     
+    # Specify the file to write to
+    output_path = os.path.join("analysis", "analysis.txt")
+
+    with open(output_path, 'w') as f:
+        f.write("Financial Analysis\n")
+        f.write("----------------------------\n")
+        f.write(f"Total Months: {total_months}\n")
+        f.write(f'Total: ${net_profit_losses}\n')
+        f.write(f"Average Change: ${round(ave_change,2)}\n")
+        f.write(f"Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase})\n")
+        f.write(f"Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease})\n")
+            
+
 
