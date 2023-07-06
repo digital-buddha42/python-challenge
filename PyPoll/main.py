@@ -51,7 +51,7 @@ with open(output_path, 'w') as f:
     f.write(f'Total Votes: {total_votes}\n')
     f.write('-------------------------\n')
     for candidate, votes in candidates.items():
-        f.write(f'{candidate}: {round(votes/total_votes*100,3)}% ({votes})')   
+        f.write(f'{candidate}: {round(votes/total_votes*100,3)}% ({votes})\n')   
     f.write('-------------------------\n')
     f.write(f'Winner: {most_votes_candidate}\n')
     f.write('-------------------------')
